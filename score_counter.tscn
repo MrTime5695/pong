@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjf78474tq1a2"]
+
+[ext_resource type="Theme" uid="uid://d22tjvots17us" path="res://labels.tres" id="1_seto0"]
+[ext_resource type="Script" path="res://Buttons.gd" id="2_2v5ml"]
+
+[sub_resource type="Theme" id="Theme_ymduk"]
+RichTextLabel/colors/default_color = Color(0.52549, 0.431373, 1, 1)
+RichTextLabel/colors/font_shadow_color = Color(1, 0.721569, 0.521569, 1)
+RichTextLabel/constants/shadow_offset_x = 4
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/font_sizes/normal_font_size = 80
+
+[node name="score counter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="score1" type="RichTextLabel" parent="."]
+layout_mode = 2
+anchor_left = 0.187
+anchor_right = 0.187
+offset_left = -191.488
+offset_right = 0.511978
+offset_bottom = 56.0
+theme = ExtResource("1_seto0")
+bbcode_enabled = true
+text = "P1 Score: 0"
+
+[node name="score2" type="RichTextLabel" parent="."]
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme = ExtResource("1_seto0")
+bbcode_enabled = true
+text = "P2 Score: 0"
+
+[node name="winner" type="RichTextLabel" parent="."]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -28.0
+offset_right = 336.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ymduk")
+bbcode_enabled = true
+text = "Player One Wins!"
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 376.0
+offset_top = 560.0
+offset_right = 647.0
+offset_bottom = 613.0
+script = ExtResource("2_2v5ml")
+
+[node name="exit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("1_seto0")
+text = " Quit "
+
+[node name="restart" type="Button" parent="Buttons"]
+layout_mode = 2
+theme = ExtResource("1_seto0")
+text = " Play Again"
+
+[connection signal="pressed" from="Buttons/exit" to="Buttons" method="_on_exit_pressed"]
+[connection signal="pressed" from="Buttons/restart" to="Buttons" method="_on_restart_pressed"]
